@@ -1,0 +1,50 @@
+{
+  "name": "elsevier-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Elsevier Developer APIs (Scopus, ScienceDirect, and more)",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "elsevier-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "elsevier",
+    "scopus",
+    "sciencedirect",
+    "academic",
+    "research",
+    "claude",
+    "anthropic",
+    "model-context-protocol"
+  ],
+  "license": "MIT",
+  "author": "kemalabut",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kemalabut/elsevier-mcp.git"
+  },
+  "homepage": "https://github.com/kemalabut/elsevier-mcp",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
