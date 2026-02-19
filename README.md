@@ -28,7 +28,7 @@ MCP server for the [Elsevier Developer APIs](https://dev.elsevier.com). Gives Cl
 ### Install from GitHub
 
 ```bash
-git clone https://github.com/kemalabut/elsevier-mcp.git
+git clone https://github.com/kemalabuteliyte/elsevier-mcp.git
 cd elsevier-mcp
 npm install
 ```
