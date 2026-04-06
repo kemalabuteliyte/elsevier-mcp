@@ -1,4 +1,10 @@
 node_modules/
+dist/
+package-lock.json
+*.log
 .env
 *.tgz
 .DS_Store
+._*
+.code-review-graph/
+.claude/

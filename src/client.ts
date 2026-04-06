@@ -21,10 +21,10 @@ export class ElsevierClient {
     this.instToken = instToken;
   }
 
-  private buildHeaders(): Record<string, string> {
+  private buildHeaders(accept: string = "application/json"): Record<string, string> {
     const headers: Record<string, string> = {
       "X-ELS-APIKey": this.apiKey,
-      Accept: "application/json",
+      Accept: accept,
     };
 
     if (this.instToken) {
@@ -142,6 +142,7 @@ export class ElsevierClient {
   async get(
     path: string,
     params?: Record<string, string | number | undefined>,
+    accept?: string,
   ): Promise<unknown> {
     const url = new URL(path, BASE_URL);
 
@@ -153,11 +154,14 @@ export class ElsevierClient {
       }
     }
 
+    const parseSuccess = (r: Response) =>
+      accept && accept !== "application/json" ? r.text() : r.json();
+
     // First attempt
-    const response = await fetch(url.toString(), { headers: this.buildHeaders() });
+    const response = await fetch(url.toString(), { headers: this.buildHeaders(accept) });
 
     if (response.ok) {
-      return response.json();
+      return parseSuccess(response);
     }
 
     // On 401: try IP authentication once, then retry
@@ -180,11 +184,11 @@ export class ElsevierClient {
       if (authenticated) {
         // Retry the original request with the new authtoken
         const retryResponse = await fetch(url.toString(), {
-          headers: this.buildHeaders(),
+          headers: this.buildHeaders(accept),
         });
 
         if (retryResponse.ok) {
-          return retryResponse.json();
+          return parseSuccess(retryResponse);
         }
 
         // Retry also failed

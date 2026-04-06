@@ -18,6 +18,7 @@ import { registerSubjectClassifications } from "./tools/subject-classifications.
 import { registerCitationCount } from "./tools/citation-count.js";
 import { registerCitationsOverview } from "./tools/citations-overview.js";
 import { registerPlumXMetrics } from "./tools/plumx-metrics.js";
+import { registerFulltextRetrieval } from "./tools/fulltext-retrieval.js";
 
 async function main() {
   const apiKey = process.env.ELSEVIER_API_KEY;
@@ -55,9 +56,10 @@ async function main() {
     registerCitationCount(server, client);
     registerCitationsOverview(server, client);
     registerPlumXMetrics(server, client);
-    console.error("Elsevier MCP server running on stdio (all 13 tools enabled)");
+    registerFulltextRetrieval(server, client);
+    console.error("Elsevier MCP server running on stdio (all 14 tools enabled)");
   } else {
-    console.error("Elsevier MCP server running on stdio (6 tools enabled — set ELSEVIER_ENABLE_ALL_TOOLS=true for all 13)");
+    console.error("Elsevier MCP server running on stdio (6 tools enabled — set ELSEVIER_ENABLE_ALL_TOOLS=true for all 14)");
   }
 
   const transport = new StdioServerTransport();
