@@ -1,0 +1,80 @@
+{
+  "manifest_version": "0.2",
+  "name": "elsevier-mcp",
+  "display_name": "Elsevier Research Tools",
+  "version": "1.0.0",
+  "description": "Search Scopus, retrieve ScienceDirect articles and full texts, look up journals, authors, citations, and more via Elsevier APIs.",
+  "author": {
+    "name": "kemalabut",
+    "url": "https://github.com/kemalabuteliyte"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kemalabuteliyte/elsevier-mcp"
+  },
+  "homepage": "https://github.com/kemalabuteliyte/elsevier-mcp",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "ELSEVIER_API_KEY": "${user_config:api_key}",
+        "ELSEVIER_INST_TOKEN": "${user_config:inst_token}",
+        "ELSEVIER_ENABLE_ALL_TOOLS": "${user_config:enable_all_tools}"
+      }
+    }
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Elsevier API Key",
+      "description": "Your API key from dev.elsevier.com",
+      "required": true,
+      "sensitive": true
+    },
+    "inst_token": {
+      "type": "string",
+      "title": "Institutional Token",
+      "description": "Optional institutional token for expanded access",
+      "required": false,
+      "sensitive": true
+    },
+    "enable_all_tools": {
+      "type": "string",
+      "title": "Enable All Tools",
+      "description": "Set to 'true' to enable all 14 tools (requires institutional access). Leave empty for 6 free tools only.",
+      "required": false,
+      "default": "false"
+    }
+  },
+  "tools": [
+    { "name": "scopus_search", "description": "Search Scopus for scholarly documents" },
+    { "name": "abstract_retrieval", "description": "Retrieve abstract and metadata by identifier" },
+    { "name": "article_retrieval", "description": "Retrieve ScienceDirect article by identifier" },
+    { "name": "fulltext_retrieval", "description": "Retrieve full text of a ScienceDirect article as plain text" },
+    { "name": "serial_title_search", "description": "Search for journals by title, ISSN, or subject" },
+    { "name": "serial_title_retrieval", "description": "Retrieve journal details by ISSN" },
+    { "name": "subject_classifications", "description": "Look up subject area codes and descriptions" },
+    { "name": "author_search", "description": "Search for authors in Scopus" },
+    { "name": "affiliation_search", "description": "Search for institutions and affiliations" },
+    { "name": "author_retrieval", "description": "Retrieve author profile by ID" },
+    { "name": "affiliation_retrieval", "description": "Retrieve institution details" },
+    { "name": "citation_count", "description": "Get citation counts for documents" },
+    { "name": "citations_overview", "description": "Detailed citation overview with yearly breakdowns" },
+    { "name": "plumx_metrics", "description": "PlumX altmetrics (usage, captures, social media)" }
+  ],
+  "keywords": [
+    "elsevier",
+    "scopus",
+    "sciencedirect",
+    "academic",
+    "research",
+    "papers",
+    "citations"
+  ],
+  "license": "MIT"
+}

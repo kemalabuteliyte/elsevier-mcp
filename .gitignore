@@ -4,7 +4,9 @@ package-lock.json
 *.log
 .env
 *.tgz
+*.mcpb
 .DS_Store
 ._*
 .code-review-graph/
 .claude/
+.mcpbignore

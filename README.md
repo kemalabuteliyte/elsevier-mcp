@@ -6,7 +6,13 @@ MCP server for the [Elsevier Developer APIs](https://dev.elsevier.com). Gives Cl
 
 1. Get a free API key at [dev.elsevier.com](https://dev.elsevier.com)
 
-2. Add to your Claude Code settings (`~/.claude.json`):
+### Claude Desktop (one-click install)
+
+Download the latest `.mcpb` file from [Releases](https://github.com/kemalabuteliyte/elsevier-mcp/releases), then open it with Claude Desktop. You'll be prompted to enter your API key during setup.
+
+### Claude Code (npx)
+
+Add to your Claude Code settings (`~/.claude.json`):
 
 ```json
 {
@@ -23,7 +29,7 @@ MCP server for the [Elsevier Developer APIs](https://dev.elsevier.com). Gives Cl
 }
 ```
 
-3. Restart Claude Code. Done.
+Restart Claude Code. Done.
 
 ### Install from GitHub
 
@@ -71,7 +77,7 @@ These 6 tools work with a free Elsevier API key:
 
 ## Enabling All Tools (Institutional Access)
 
-7 additional tools require institutional network access, an institutional token, or additional API subscriptions. Enable with `ELSEVIER_ENABLE_ALL_TOOLS=true`:
+8 additional tools require institutional network access, an institutional token, or additional API subscriptions. Enable with `ELSEVIER_ENABLE_ALL_TOOLS=true`:
 
 ```json
 {
@@ -99,6 +105,7 @@ These 6 tools work with a free Elsevier API key:
 | `citation_count` | Get citation counts (supports batch lookup) | API subscription |
 | `citations_overview` | Detailed citation overview with yearly breakdowns | API subscription |
 | `plumx_metrics` | PlumX altmetrics (usage, captures, social media) | Institutional access |
+| `fulltext_retrieval` | Retrieve full text of a ScienceDirect article as plain text | Institutional access |
 
 To get institutional access:
 - Connect from a university/institutional network with a Scopus subscription
